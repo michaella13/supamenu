@@ -1,0 +1,104 @@
+import { StyleSheet } from "react-native";
+
+const styles = StyleSheet.create({
+    container:{
+        flex:1,
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    backIcon:{
+        backgroundColor:'#E5E4E2',
+        width:40,
+        height:40,
+        alignItems:'center',
+        justifyContent:'center',
+        borderRadius:5,
+        marginRight:270,
+
+
+    },
+    drinks:{
+        color:'orange',
+        fontWeight:100,
+        fontSize:28,
+        flexDirection:'row'
+    },
+    drinkImage:{
+        borderRadius:15,
+        width:60,
+        height:60
+    },
+    drinkDetails:{
+        backgroundColor:'#E5E4E2',
+        flexDirection:'row',
+        width:'90%',
+        alignItems:'space-between',
+        height:70,
+        borderRadius:10,
+        alignItems:'center',
+        justifyContent:'center',
+        marginTop:20
+    },
+    drinkName:{
+        fontWeight:100,
+        fontSize:12
+    },
+    barista:{
+        fontWeight:'bold',
+        color:'gray'
+    },
+    price:{
+        color:'orange',
+        fontWeight:'bold',
+        fontSize:20
+    },
+    drinksPriceSection:{
+        flexDirection:'row'
+    },
+    addDrinkNumber:{
+        flexDirection:'row',
+        marginLeft:30,
+        justifyContent:'space-between',
+        width:'35%',
+        backgroundColor:'white',
+        borderRadius:5,
+        alignItems:'center'
+        
+    },
+    textSection:{
+        marginLeft:30
+    },
+    moreDrinks:{
+        color:'orange',
+        fontWeight:'700',
+        fontSize:18
+    },
+    moreDrinksContainer:{
+        flexDirection:'row',
+        justifyContent:'space-between',
+        width:'40%',
+        marginTop:20
+    },
+    totalContainer:{
+        flexDirection:'row',
+        width:'90%',
+        justifyContent:'space-between',
+        marginTop:10,
+        marginBottom:10
+    },
+    totalText:{
+        fontWeight:'bold',
+        fontSize:18
+    },
+    totalAmount:{
+        color:'orange',
+        fontWeight:'bold',
+        fontSize:20
+    },
+    choose:{
+        marginLeft:200
+    }
+    
+
+})
+export default styles

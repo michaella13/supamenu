@@ -1,29 +1,97 @@
-import {  Text, View } from 'react-native'
+import { Text, View, TextInput, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { MaterialCommunityIcons } from '@expo/vector-icons'; 
-import { Ionicons } from '@expo/vector-icons'; 
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import styles from './menu.styles'
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useState } from 'react';
+import MenuItem from '../common/menuItem/MenuItem';
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function Menu() {
+  const navigation = useNavigation()
+
+  const [tableNumber, setTableNumber] = useState('');
+
+  const handleTableNumber = (number) => {
+    setTableNumber(number)
+
+  }
+
+  const goToAppetizer = () => {
+    navigation.navigate('Menu')
+
+  }
+  const goToDrinks = () => {
+    navigation.navigate('Drinks')
+
+  }
   return (
-    <View>
-      <Text>Choose Kigali</Text>
-      <View>
-      <MaterialCommunityIcons name="table-furniture" size={24} color="orange" />
-      <TextInput
-      placeholder='Enter table number'
-      />
+    <View style={styles.container}>
+      <Text style={styles.restoTitle}>Choose Kigali</Text>
+
+      <View style={styles.order}>
+        <View>
+
+          
+          
+          <MaterialCommunityIcons name="table-furniture" size={44} color="orange" style={styles.icon} />
+            <View style={styles.numberOrdered}>
+              <Text style={styles.n}>N</Text>
+              <Text style={styles.tableNumber}>{tableNumber}</Text>
+            </View>
+
+
+          
+
+          <TextInput
+            value={tableNumber}
+            placeholder='Table number'
+            onChangeText={handleTableNumber}
+            placeholderTextColor="white"
+            keyboardType='numeric'
+            color='white'
+            textAlign='center'
+          />
+        </View>
+        <View style={styles.vr}>
+        </View>
+        <TouchableOpacity>
+          <Ionicons name="hand-left-outline" size={44} color="orange" style={styles.icon} />
+          <Text style={styles.callWaiterText}>Call waiter</Text>
+        </TouchableOpacity>
+
       </View>
-      
-      
-      <TouchableOpacity>
-      <Ionicons name="hand-left-outline" size={24} color="orange" />
-        <Text>Call waiter</Text>
-      </TouchableOpacity>
-      
-      <Text>Menu</Text>
-      
+      <Text style={styles.menu}>Menu</Text>
+
+      <MenuItem
+        type='Appetizer'
+        handleOnpress={goToAppetizer}
+
+      />
+      <MenuItem
+        type='Starter'
+        handleOnpress={goToAppetizer}
+
+      />
+      <MenuItem
+        type='Main'
+        handleOnpress={goToAppetizer}
+
+      />
+      <MenuItem
+        type='Dessert'
+        handleOnpress={goToAppetizer}
+
+      />
+
+      <MenuItem
+        type='Drink'
+        handleOnpress={goToDrinks}
+
+      />
+
+
 
     </View>
   )

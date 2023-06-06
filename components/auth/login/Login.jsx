@@ -1,5 +1,6 @@
 import { View, Text , Image, TouchableOpacity} from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
 
 import Button from "../../common/button/CustomButton";
 import CustomInput from "../../common/input/CustomInput";
@@ -12,9 +13,21 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import styles from "./login.styles";
 
 const Login = () =>{
+
+   const [email, setEmail] = useState('');
+   const [password, setPassword] = useState('');
+
     const navigation=useNavigation();
     const goToLogin=()=>{
         navigation.navigate('Signup')
+    }
+
+    const handleLogin=()=>{
+      const loginData={
+         email,
+         password
+      }
+      axios.post('http://localhost:8000/login', loginData)
     }
    return(
 <View style={styles.container}>
@@ -33,16 +46,22 @@ const Login = () =>{
      
      <View style={styles.form}>  
       <CustomInput
+      value={email}
+      onChange={(text)=>setEmail(text)}
       icon={<AntDesign name="mail" size={24} color="grey" />}
       placeholder='Email'
       />
       <CustomInput
+      value={password}
+      onChange={(text)=>setPassword(text)}
       icon={<AntDesign name="lock" size={24} color="grey" />}
-      placeholder='Email'
+      secure={true}
+      placeholder='Password'
       />
 
        <Button
        title='Sign In'
+       onPress={handleLogin}
        />
       
       <View  style={styles.hrstyle}>

@@ -6,6 +6,8 @@ const styles=StyleSheet.create({
     width: 310,
     height: 50,
     backgroundColor:'orange',
+    marginTop:10,
+    marginLeft:25
    },
    title:{
     color:'white',
@@ -14,10 +16,7 @@ const styles=StyleSheet.create({
     textAlign:'center',
     marginTop:10
    },
-   container:{
-    marginTop:10,
-    marginLeft:25
-   }
+   
       
 })
 export default styles

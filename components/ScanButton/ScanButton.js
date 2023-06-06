@@ -29,9 +29,7 @@ export default function ScanButton() {
 
       </TouchableOpacity>
       
-      <Text style={styles.or}>
-        Scan, Pay and Enjoy!
-      </Text>
+      
     </SafeAreaView>
   )
 }
