@@ -5,8 +5,13 @@ import CustomButton from '../common/button/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import styles from './rating.styles'
 import Star from './Star';
+import { useState } from 'react';
 
 export default function Rating() {
+  const[rating, setRating]=useState(0);
+  const countRate=()=>{
+    setRating(rating+1)
+  }
   return (
     <View style={styles.container}>
       
@@ -18,11 +23,22 @@ export default function Rating() {
       </Text>
 
       <View style={styles.stars}>
-      <Star/>
-      <Star/>
-      <Star/>
-      <Star/>
-      <Star/>
+      <Star
+      handleRate={countRate}
+      />
+      <Star
+      handleRate={countRate}
+      />
+      <Star
+      handleRate={countRate}
+      />
+      <Star
+      handleRate={countRate}
+      />
+      <Star
+      handleRate={countRate}
+      />
+      
 
       </View>
 

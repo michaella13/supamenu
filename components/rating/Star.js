@@ -3,7 +3,7 @@ import React from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { useState } from 'react';
 
-export default function Star() {
+export default function Star({handleRate}) {
     const [iconColor, setIconColor]=useState('white')
     const [rating, setRating]=useState(0)
     const rate=()=>{
@@ -11,7 +11,10 @@ export default function Star() {
         setIconColor(newColor)    
          }
   return (
-    <TouchableOpacity onPress={rate}>
+    <TouchableOpacity onPress={()=>{
+      rate,
+      {handleRate}
+    }}>
         <MaterialCommunityIcons name="star" size={44} color={iconColor}/>
     </TouchableOpacity>
   )

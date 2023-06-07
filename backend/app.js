@@ -1,5 +1,6 @@
 require('dotenv').config()
 const user= require('./controllers/UserController')
+const resto =require('./controllers/RestaurantController')
 const connection=require('./utils/db')
 
 const bodyParser=require('body-parser')
@@ -15,6 +16,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 app.use('/', user)
+app.use('/api', resto)
 
 
 
