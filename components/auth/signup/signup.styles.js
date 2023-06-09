@@ -50,7 +50,23 @@ const styles= StyleSheet.create({
         flexDirection:'row',
         marginLeft:80,
         marginTop:20
-    }
+    },
+    messageContainer: {
+        backgroundColor: 'transparent', // Default background color
+        padding: 10,
+        marginVertical: 10,
+        
+      },
+      messageContainerText:{
+        textAlign:'center',
+        color:'white'
+      },
+      greenBackground: {
+        backgroundColor: '#90ee90',
+      },
+      redBackground: {
+        backgroundColor: '#ffb6c1',
+      },
     
 })
 export default styles

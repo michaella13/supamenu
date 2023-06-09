@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         
     },
     textSection:{
-        marginLeft:30
+        marginLeft:30,
     },
     moreDrinks:{
         color:'orange',

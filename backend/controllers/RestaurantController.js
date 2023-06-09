@@ -18,15 +18,20 @@ router.post('/restaurant', (req,res)=>{
       });
 })
 
-router.get('/restaurants', (req,res)=>{
+router.post('/restaurants', (req,res)=>{
     const {name}=req.body
-    Restaurant.find({ name: { $regex: name, $options: 'i' } })
-    .then(restaurants => {
-        res.status(200).json(restaurants); // Return the matching restaurants as a response
+    console.log("Nam of resto "+name)
+    if (!name || typeof name !== 'string') {
+        return res.json({ message: 'Invalid name value' });
+        
+      }
+      Restaurant.find({ name: { $regex: `.*${name}.*`, $options: 'i' } })
+     .then(restaurants => {
+        res.status(200).json({restaurants, message:'Found matches'}); // Return the matching restaurants as a response
       })
       .catch(error => {
         console.error(error);
-        res.status(500).json({ error: 'Failed to find restaurant with name '+ name });
+        res.json({ message: 'Failed to find restaurant with name '+ name });
       });
 })
 

@@ -5,13 +5,16 @@ import { Ionicons } from '@expo/vector-icons';
 import styles from './menu.styles'
 import { useState } from 'react';
 import MenuItem from '../common/menuItem/MenuItem';
+
+import { useStoreState } from 'easy-peasy';
 import { useNavigation } from '@react-navigation/native';
 
 
 export default function Menu() {
   const navigation = useNavigation()
-
   const [tableNumber, setTableNumber] = useState('');
+
+  const restaurant=useStoreState(state=>state.restaurant)
 
   const handleTableNumber = (number) => {
     setTableNumber(number)
@@ -28,8 +31,7 @@ export default function Menu() {
   }
   return (
     <View style={styles.container}>
-      <Text style={styles.restoTitle}>Choose Kigali</Text>
-
+      <Text style={styles.restoTitle}>{restaurant.name}</Text>
       <View style={styles.order}>
         <View>
 

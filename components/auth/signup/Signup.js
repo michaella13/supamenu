@@ -1,6 +1,6 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 import Button from "../../common/button/CustomButton";
@@ -21,6 +21,24 @@ const Signup = () => {
    const [password, setPassword] = useState('');
    const [phoneNumber, setPhoneNumber] = useState('');
 
+   const [signupMessage, setSignupMessage]=useState(null)
+   const [messageStyle, setMessageStyle]=useState({})
+
+   const getMessageStyle = () => {
+      console.log(signupMessage)
+      if (signupMessage && signupMessage.includes('User created successfully')) {
+        return styles.greenBackground;
+      } else if (signupMessage) {
+        return styles.redBackground;
+      } else {
+        return {}; // Default style
+      }
+    };
+    useEffect(()=>{
+      setMessageStyle(getMessageStyle())
+    },[signupMessage])
+
+
   const handleSignUp=()=>{
    
    const signUpData={
@@ -29,18 +47,23 @@ const Signup = () => {
       email:email,
       password:password
    }
+   console.log(signUpData)
 
-   axios.post('http://localhost:8000/signup', signUpData)
+   axios.post('http://192.168.8.106:8000/signup', signUpData)
    .then(response=>{
-      console.log(response.data)
+      const {status, message} =response.data
+      setSignupMessage(message)
    })
    .catch(err=>{
       console.log('error calling the server' ,err)
    })
+   // navigation.navigate('Login')
    
   }
    return (
       <View style={styles.container}>
+        
+         
 
          <View style={styles.subContainer}>
             <Image
@@ -93,11 +116,11 @@ const Signup = () => {
                   <HorizantalLine />
 
                </View>
-               <Text style={styles.fill}> If you have a PMG account</Text>
+               {/* <Text style={styles.fill}> If you have a PMG account</Text>
                <Button
                   title='Sign In'
                   handleOnPress={handleSignUp}
-               />
+               /> */}
                <View style={styles.dont}>
                   <Text style={styles.dontHave}>Already have an account? </Text>
                   <TouchableOpacity onPress={goToLogin}>
@@ -105,6 +128,12 @@ const Signup = () => {
                   </TouchableOpacity>
 
                </View>
+               <View style={[styles.messageContainer, messageStyle]}>
+         <Text style={styles.messageContainerText}>
+            {signupMessage}
+         </Text>
+
+         </View>
 
             </View>
          </View>
